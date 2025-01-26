@@ -18,8 +18,7 @@ class StringApp {
 
   static const String phoneNumberLong =
       "Phone number must be at least 11 numbers long";
-  static const String idNumberLong =
-      "Id must be at least 14 numbers long";
+  static const String idNumberLong = "Id must be at least 14 numbers long";
   static const String nameCharactersLong =
       "Name must be at least 3 characters long";
   static const String pleaseEnterYourPassword = "Please enter your password";
@@ -36,4 +35,6 @@ class StringApp {
   static const String id = " id";
   static const String enterPhoneNumber = "enter phone number";
   static const String phoneNumber = " phone number";
+  static const String bmiCalc = "حساب مؤشر كتله الجسم" ;
+  static const String result = "النتيجة" ;
 }

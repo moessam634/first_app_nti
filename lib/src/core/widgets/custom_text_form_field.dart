@@ -1,48 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:login_app/src/core/model/text_form_field_model.dart';
 import 'package:login_app/src/core/styles/color_app.dart';
 import 'package:login_app/src/core/styles/text_style_app.dart';
-import 'package:login_app/src/core/widgets/text_field_border.dart';
+import 'package:login_app/src/core/widgets/text_form_field_border.dart';
+
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({
-    super.key,
-    required this.label,
-    required this.hintText,
-    required this.prefixIcon,
-    required this.keyBoardType,
-    this.suffixIcon,
-    required this.controller,
-    this.validator,
-    this.obscureText = false,
-    this.onPressed,
+
+   const CustomTextFormField({
+    super.key, required this.textFormFieldModel,
   });
 
-  final String label;
-  final String hintText;
-  final IconData prefixIcon;
-  final IconData? suffixIcon;
-  final bool obscureText;
-  final TextInputType keyBoardType;
-  final TextEditingController controller;
-  final String? Function(String?)? validator;
-  final void Function()? onPressed;
+   final TextFormFieldModel textFormFieldModel;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller,
-      validator: validator,
+      controller: textFormFieldModel.controller,
+      validator: textFormFieldModel.validator,
       autovalidateMode: AutovalidateMode.always,
       decoration: InputDecoration(
-        label: Text(label),
-        hintText: hintText,
+        label: Text(textFormFieldModel.label),
+        hintText: textFormFieldModel.hintText,
         labelStyle: TextStyleApp.normalGrey,
         floatingLabelStyle: TextStyleApp.normalGrey,
-        prefixIcon: Icon(prefixIcon),
-        suffixIcon: IconButton(
-          onPressed: onPressed,
-          icon: Icon(suffixIcon),
-        ),
+        prefixIcon: Icon(textFormFieldModel.prefixIcon),
+        suffixIcon: textFormFieldModel.suffixIcon,
+        suffix: textFormFieldModel.suffix,
         border: textFormFieldBorder(radius: 16, color: ColorApp.kGreyColor),
         enabledBorder: textFormFieldBorder(
           radius: 16,
@@ -51,8 +35,8 @@ class CustomTextFormField extends StatelessWidget {
         focusedBorder:
             textFormFieldBorder(radius: 16, color: ColorApp.kPrimaryColor),
       ),
-      keyboardType: keyBoardType,
-      obscureText: obscureText,
+      keyboardType: textFormFieldModel.keyBoardType,
+      obscureText: textFormFieldModel.obscureText,
     );
   }
 }
